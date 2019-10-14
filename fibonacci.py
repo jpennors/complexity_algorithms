@@ -1,6 +1,6 @@
 import time
 import numpy as np
-import plotly.express as px
+import matplotlib.pyplot as plt
 
 
 def fib_recursion(n):
@@ -42,8 +42,7 @@ def fib_bottom_up(n):
 def main():
     """Compute time to execute two different aproaches"""
 
-    # n_values = np.array([5, 10, 15, 20, 25, 30, 35, 40])
-    n_values = np.array([5, 10, 15, 20])
+    n_values = np.array([5, 10, 15, 20, 25, 30, 35, 40])
     nb_values = len(n_values)
 
     result = {
@@ -56,7 +55,6 @@ def main():
     for i in range(nb_values):
 
         n_value = n_values[i]
-        print(n_value)
 
         start = time.process_time()
         fib_recursion(n_value)
@@ -72,6 +70,14 @@ def main():
         result['bottom_up'][i] = (time.process_time() - start)
 
     print(result)
+    fig, ax = plt.subplots()
+    plt.ylabel("Time (s)")
+    plt.xlabel('Value n')
+    ax.plot(n_values, result['recursion'], label="recursion")
+    ax.plot(n_values, result['memoize'], label="memoize")
+    ax.plot(n_values, result['bottom_up'], label="bottom_up")
+    ax.legend()
+    plt.savefig("images/fib.png")
 
 
     
