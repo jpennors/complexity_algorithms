@@ -12,3 +12,4 @@ to raise awareness about time complexity.
 
 **Outputs**
 
+[Fib Output]: /images/fib.png "Fib Output"
